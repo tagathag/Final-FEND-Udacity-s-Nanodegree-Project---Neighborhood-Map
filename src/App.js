@@ -26,7 +26,7 @@ class App extends Component {
           <Map/>
         </div>
         <footer>
-            <h1>Find your Gym</h1>
+            <h1>This is the footer</h1>
         </footer>
       </div>
     );
