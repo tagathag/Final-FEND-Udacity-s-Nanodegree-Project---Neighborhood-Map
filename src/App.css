@@ -12,17 +12,17 @@
 }
 
 
-.App-header {
-  background-color: #222;
-  color: white;
-}
+/* Header */
 
 .App-title {
   font-size: 1.5em;
   display: inline-block;
 }
 
-/* Header */
+.App-header {
+  background-color: #222;
+  color: white;
+}
 
 header {
   height:8%;
@@ -30,8 +30,8 @@ header {
 
 .header__menu {
   display: inline-block;
-  /* position: absolute;
-  left: 0; */
+  position: absolute;
+  right: 0;
   padding: 1em;
 }
 .header__menu svg {
@@ -50,7 +50,13 @@ header {
   -webkit-transform: translate(0px, 0);
   transform: translate(0px, 0);
   /* z-index: 10; */
-  background-color: #ffffff;
+  background-color: #d9d9d9;
+}
+
+.hide {
+  -webkit-transform: translate(-320px, 0);
+  transform: translate(-320px, 0);
+  transition: transform 0.3s ease;
 }
 
 /* Map */
@@ -68,8 +74,17 @@ header {
   height: 84%;
 }
 
+.full-width{
+  width:100%;
+}
+
 /* footer */
 
 footer {
   height:8%;
+  background-color: #999999;
+}
+
+.footer-title {
+  margin:0;
 }
