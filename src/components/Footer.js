@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
-import logo from '../logo.svg';
+// import logo from '../logo.svg';
 
 class Footer extends Component {
     render(){
         return(
         <footer>
-            <h1>Find your Gym</h1>
+            <h1 className="footer-title">This is the footer</h1>
         </footer>
-
         )
     }
 }

@@ -1,16 +1,41 @@
 import React, { Component } from 'react';
+import PropTypes from "prop-types";
+
+
 
 class Sidemenu extends Component {
+
+    static propTypes = {
+        query: PropTypes.string.isRequired,
+        updateQuery: PropTypes.func.isRequired,
+        shownGyms: PropTypes.array.isRequired,
+    }
+
     render(){
+        const { query, updateQuery, shownGyms, gyms } = this.props
+
         return(
-           
-                <ol>
-                    <li>This is a list</li>
-                </ol>
-            
+            <aside className="Sidebar">
+                <section className="Search-field">
+                    <input
+                        className="Search-field-input"
+                        type="text"
+                        placeholder="Filter gyms"
+                        value={query}
+                        onChange={(event)=>updateQuery(event.target.value)}
+                    />
+                </section>
+                <section className="list" id="list">
+                    <ol>
+                        {shownGyms.map((shownGym)=>
+                           <li key={shownGym.venue.id}>{shownGym.venue.name}</li> 
+                        )}   
+                    </ol>
+                </section>
+            </aside>            
         )
     }
 }
 
 
-export default Sidemenu;
+export default Sidemenu
