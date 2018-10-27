@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from "prop-types";
 
-
-
 class Sidemenu extends Component {
 
     static propTypes = {
@@ -12,7 +10,7 @@ class Sidemenu extends Component {
     }
 
     render(){
-        const { query, updateQuery, shownGyms, gyms } = this.props
+        const { query, updateQuery, shownGyms } = this.props
 
         return(
             <aside className="Sidebar">

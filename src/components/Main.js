@@ -20,6 +20,7 @@ class Main extends Component {
     // We fetch the data when the component is mounted by invoking the "getGyms()" function
     componentDidMount() {
         this.getGyms();
+        console.log(this.state.haserror);
     }
     
     // function for fetching data from foursquare API
@@ -31,7 +32,7 @@ class Main extends Component {
           query: "gyms",
           ll: "40.640063,22.94419",
           v: "20181808",
-          limit: 10,
+          limit: 20,
           radius: 2000
         }
     
@@ -66,15 +67,12 @@ class Main extends Component {
             const match=new RegExp(escapeRegExp(query),"i");
             this.setState({
                 shownGyms: this.state.gyms.filter((gym)=>match.test(gym.venue.name)) 
-            })
-            
+            })     
         }else{
             this.setState({
                 shownGyms: this.state.gyms
             })
-        }
-
-        
+        }    
     }
 
     render(){
@@ -85,7 +83,12 @@ class Main extends Component {
                     updateQuery={this.updateQuery}
                     shownGyms={this.state.shownGyms}
                 />
-                <Map/>
+                <Map
+                    gyms={this.state.shownGyms} 
+                    containerElement={ <div className="map" id="map_container" /> }
+                    mapElement={ <div style={{ height: `100%` }} /> } 
+                    isMarkerShown={true}            
+                />
             </div>
         )
     }
