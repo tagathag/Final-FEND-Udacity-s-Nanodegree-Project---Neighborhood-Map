@@ -39,7 +39,7 @@ header {
   fill: #E0E0E0;
 }
 
-/* List */
+/* Sidebar */
 
 .Sidebar {
   height: 100%;
@@ -53,8 +53,21 @@ header {
   height:95%;
   -webkit-transform: translate(0px, 0);
   transform: translate(0px, 0);
-  /* z-index: 10; */
-  background-color: #d9d9d9;
+  background-color: #f0e9e9;
+  overflow:hidden;
+  overflow-y:scroll;
+}
+
+.list-item {
+  -webkit-transition-duration: 0.4s; 
+  transition-duration: 0.4s;
+  margin: 5%;
+  cursor: pointer;
+}
+
+.list-item:hover {
+  background-color: rgb(53, 65, 65);
+  color:white;
 }
 
 .Search-field {
@@ -91,6 +104,12 @@ header {
 
 .full-width{
   width:100%;
+}
+
+.details-window {
+  width: 100px;
+  height: 100px;
+  background-color: white;
 }
 
 /* footer */

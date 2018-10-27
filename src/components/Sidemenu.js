@@ -10,7 +10,7 @@ class Sidemenu extends Component {
     }
 
     render(){
-        const { query, updateQuery, shownGyms } = this.props
+        const { query, updateQuery, shownGyms, showGymInfo } = this.props
 
         return(
             <aside className="Sidebar">
@@ -26,7 +26,12 @@ class Sidemenu extends Component {
                 <section className="list" id="list">
                     <ol>
                         {shownGyms.map((shownGym)=>
-                           <li key={shownGym.venue.id}>{shownGym.venue.name}</li> 
+                           <li
+                                key={shownGym.venue.id}
+                                className="list-item"
+                                onClick={()=>{showGymInfo(shownGym.venue.id)}}>
+                                    {shownGym.venue.name}
+                            </li> 
                         )}   
                     </ol>
                 </section>

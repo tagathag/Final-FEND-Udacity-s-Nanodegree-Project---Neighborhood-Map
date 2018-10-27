@@ -10,6 +10,7 @@ class Main extends Component {
     state = {
         gyms : [],
         shownGyms : [],
+        activeGym : null,
         zoom : 14,
         latitude : 40.640063,
         longtitude : 22.94419,
@@ -32,7 +33,7 @@ class Main extends Component {
           query: "gyms",
           ll: "40.640063,22.94419",
           v: "20181808",
-          limit: 20,
+          limit: 50,
           radius: 2000
         }
     
@@ -45,7 +46,8 @@ class Main extends Component {
           console.log(data.response.groups[0].items);
           this.setState({
             gyms : data.response.groups[0].items,
-            shownGyms : data.response.groups[0].items
+            shownGyms : data.response.groups[0].items,
+            activeGym : data.response.groups[0].items[0]
           });
         })
         .then( () => {
@@ -75,6 +77,13 @@ class Main extends Component {
         }    
     }
 
+    showGymInfo = (activeGym) => {
+        this.setState({
+            activeGym : activeGym
+        })
+        
+    }
+
     render(){
         return(
             <div className="main-container">
@@ -82,12 +91,17 @@ class Main extends Component {
                     query={this.state.query}
                     updateQuery={this.updateQuery}
                     shownGyms={this.state.shownGyms}
+                    showGymInfo={this.showGymInfo} 
                 />
                 <Map
+                    googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyAA9GX2fVHjxTsDtW1_Lk_v6zgoMNwhZBY&v=3.exp&libraries=geometry,drawing,places"
                     gyms={this.state.shownGyms} 
+                    loadingElement={<div style={{ height: `100%` }} />}
                     containerElement={ <div className="map" id="map_container" /> }
                     mapElement={ <div style={{ height: `100%` }} /> } 
-                    isMarkerShown={true}            
+                    isMarkerShown={true}   
+                    showGymInfo={this.showGymInfo}   
+                    activeGym={this.state.activeGym}      
                 />
             </div>
         )
