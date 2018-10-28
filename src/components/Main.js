@@ -11,6 +11,7 @@ class Main extends Component {
         gyms : [],
         shownGyms : [],
         activeGym : null,
+        bounce : false,
         zoom : 14,
         latitude : 40.640063,
         longtitude : 22.94419,
@@ -56,7 +57,7 @@ class Main extends Component {
         })
         .catch(error => {
           alert(`Sorry, we cannot fetch data from Foursquare`);
-          console.log("Foursquare error! " + error);
+          console.log("The erros is " + error);
         })
     }
 
@@ -77,12 +78,18 @@ class Main extends Component {
         }    
     }
 
-    showGymInfo = (activeGym) => {
+
+    // Function that changes the state propery "activeGym". In the "activeGym" property
+    // we put the id of the gym whom marker was clicked. Also starts and stops the bouncing animation
+    // of the Markers
+    showGymInfo = (activeGym, bounce) => {
         this.setState({
-            activeGym : activeGym
-        })
-        
+            activeGym : activeGym,
+            bounce : bounce
+            }
+        )   
     }
+
 
     render(){
         return(
@@ -101,7 +108,9 @@ class Main extends Component {
                     mapElement={ <div style={{ height: `100%` }} /> } 
                     isMarkerShown={true}   
                     showGymInfo={this.showGymInfo}   
-                    activeGym={this.state.activeGym}      
+                    activeGym={this.state.activeGym}
+                    bounce={this.state.bounce} 
+                    stopBounce={this.stopBounce}    
                 />
             </div>
         )

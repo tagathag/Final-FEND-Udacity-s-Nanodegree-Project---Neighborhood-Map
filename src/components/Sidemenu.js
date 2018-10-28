@@ -29,7 +29,7 @@ class Sidemenu extends Component {
                            <li
                                 key={shownGym.venue.id}
                                 className="list-item"
-                                onClick={()=>{showGymInfo(shownGym.venue.id)}}>
+                                onClick={()=>{showGymInfo(shownGym.venue.id, true)}}>
                                     {shownGym.venue.name}
                             </li> 
                         )}   

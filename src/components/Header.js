@@ -18,7 +18,14 @@ class Header extends Component {
                         <path d="M2 6h20v3H2zm0 5h20v3H2zm0 5h20v3H2z"/>
                     </svg>
                 </a>
-                <h1 className="App-title">Find your Gym</h1>
+                <h1 className="App-title">Find your gym!</h1>
+                {/* <input
+                        className="Search-field-header"
+                        type="text"
+                        placeholder="search for something"
+                        // value={query}
+                        // onChange={(event)=>updateQuery(event.target.value)}
+                    /> */}
             </header>
         )
     }

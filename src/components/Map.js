@@ -4,16 +4,11 @@ import {compose, withStateHandlers } from "recompose"
 
 
 const mapEnvironment = compose(
-  withStateHandlers(() => ({
-    isOpen: false,
-  }), {
-    onToggleOpen: ({ isOpen }) => () => ({
-      isOpen: !isOpen,
-    })
-  }),
   withScriptjs,
   withGoogleMap
 )
+
+
 
 const mapLayout = props => (
   <GoogleMap
@@ -25,14 +20,16 @@ const mapLayout = props => (
         <Marker
           key={gym.venue.id}
           position={gym.venue.location}
-          animation={window.google.maps.Animation.DROP}
+          animation={gym.venue.id === props.activeGym && props.bounce ? window.google.maps.Animation.BOUNCE : window.google.maps.Animation.DROP }
           onClick={()=>{
-            props.showGymInfo(gym.venue.id)
+            props.showGymInfo(gym.venue.id, true)
           }}
         >
           {gym.venue.id === props.activeGym && 
-          <InfoWindow onCloseClick={props.onToggleOpen}>
-            <div className="details-window">tasos</div>
+          <InfoWindow onCloseClick={()=> {
+            props.showGymInfo(gym.venue.id, false)
+          }}>
+            <div className="details-window">{"The address of the "+gym.venue.name+" is "+gym.venue.location.address}</div>
           </InfoWindow>}
         </Marker>
     })}

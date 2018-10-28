@@ -20,5 +20,6 @@ const Map = compose(
 // Markers animation
 // helped from https://stackoverflow.com/questions/43714895/google-is-not-defined-in-react-app-using-create-react-app
 
-
+// map component help
+//Coding based on react-google-maps documentation https://tomchentw.github.io/react-google-maps/
 
