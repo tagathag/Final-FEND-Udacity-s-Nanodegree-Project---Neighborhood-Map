@@ -16,12 +16,13 @@
 .App-title {
   font-size: 1.5em;
   display: inline-block;
+  padding-left: 20px;
 }
 
 .App-header {
-  background-color: #222;
+  background-color: rgb(68, 67, 67);
   color: white;
-  text-align: center;
+  text-align: left;
 }
 
 header {
@@ -45,15 +46,16 @@ header {
   height: 100%;
   width:300px;
   display: inline-block;
+  -webkit-transform: translate(0px, 0);
+  transform: translate(0px, 0);
+  transition: transform 0.3s ease;
 }
 
 .list {
   display: inline-block;
   width: 300px;
   height:95%;
-  -webkit-transform: translate(0px, 0);
-  transform: translate(0px, 0);
-  background-color: #f0e9e9;
+  background-color: #222;
   overflow:hidden;
   overflow-y:scroll;
 }
@@ -63,6 +65,7 @@ header {
   transition-duration: 0.4s;
   margin: 5%;
   cursor: pointer;
+  color: aliceblue
 }
 
 .list-item:hover {
@@ -72,7 +75,7 @@ header {
 
 .Search-field {
   display: inline-block;
-  width: 300px;
+  width: inherit;
   height:5%;
 }
 
@@ -81,9 +84,9 @@ header {
   width: 100%;
 }
 
-.hide {
-  -webkit-transform: translate(-320px, 0);
-  transform: translate(-320px, 0);
+.toggle-hide {
+  -webkit-transform: translate(-300px, 0);
+  transform: translate(-300px, 0);
   transition: transform 0.3s ease;
 }
 
@@ -116,10 +119,70 @@ header {
 
 footer {
   height:8%;
-  background-color: #999999;
+  background-color: rgb(68, 67, 67);
   text-align: center;
 }
 
 .footer-title {
   margin:0;
+  font-size: 1.5em;
+  padding-top: 10px;
+  color:aliceblue
+}
+
+/* Responsive CSS */
+
+@media screen and (max-width:350px){
+  .App-title {
+    font-size: 1.2em;
+    display: inline-block;
+  }
+
+  .header__menu {
+    padding: 8px;
+  }
+
+  .header__menu svg {
+    width: 30px;
+  }
+
+  .list-item {
+    margin: 5px;
+    height: 40px
+  }
+ 
+  .footer-title {
+    font-size: 1.2em;
+  }
+}
+
+@media screen and (max-width:500px){
+
+  .footer-title {
+    font-size: 1em;
+  }
+
+}
+
+
+@media screen and (max-width:700px){
+
+  .Sidebar {
+    -webkit-transform: translate(-300px, 0);
+    transform: translate(-320px, 0);
+    transition: transform 0.3s ease;
+  }
+
+  .toggle-hide {
+    position: relative;
+    -webkit-transform: translate(0px, 0);
+    transform: translate(0px, 0);
+    transition: transform 0.3s ease;
+    z-index: 10;
+  }
+
+  #map_container {
+    width: 100%;
+  }
+
 }

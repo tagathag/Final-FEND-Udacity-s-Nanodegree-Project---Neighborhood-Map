@@ -31,11 +31,11 @@ class Main extends Component {
         const params = {
           client_id: "E2JSELCAMXDB1GHPPXSXRG2ICZYTIYZME1MJYOPDIJSZAPUB",
           client_secret: "ESLKD2RQE3IFYXR5HA3SSINURL1ICVSFHKWAX5FXBVOW4IZR",
-          query: "gyms",
+          query: "gym",
           ll: "40.640063,22.94419",
           v: "20181808",
           limit: 50,
-          radius: 2000
+          radius: 5000
         }
     
         fetch(starterUrl + new URLSearchParams(params))

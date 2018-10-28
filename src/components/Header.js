@@ -3,9 +3,9 @@ import React, { Component } from 'react';
 class Header extends Component {
 
     onMenuClick = (event) => {
-        const listPlaces = document.getElementById("list");
+        const listPlaces = document.getElementById("Sidebar");
         const map_container = document.getElementById("map_container");
-        listPlaces.classList.toggle("hide");
+        listPlaces.classList.toggle("toggle-hide");
         map_container.classList.toggle("full-width");
     }
 

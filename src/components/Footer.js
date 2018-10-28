@@ -5,7 +5,7 @@ class Footer extends Component {
     render(){
         return(
         <footer>
-            <h1 className="footer-title">This is the footer</h1>
+            <h1 className="footer-title">Data provided from Foursquare API</h1>
         </footer>
         )
     }
