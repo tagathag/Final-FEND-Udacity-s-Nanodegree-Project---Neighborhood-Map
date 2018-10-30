@@ -24,13 +24,16 @@ class Sidemenu extends Component {
                     />
                 </section>
                 <section className="list" id="list">
-                    <ol>
+                    <ol aria-label="List of locations">
                         {shownGyms.map((shownGym)=>
                             <li
                                 key={shownGym.venue.id}
                                 className="list-item"
-                                onClick={()=>{showGymInfo(shownGym.venue.id, true)}}>
-                                    {shownGym.venue.name}
+                                onClick={()=>{showGymInfo(shownGym.venue, true)}}
+                                >
+                                    <button className="list-button" aria-label="button to open infowindow">{shownGym.venue.name}</button>
+                               
+                                
                             </li> 
                         )}   
                     </ol>

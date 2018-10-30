@@ -10,7 +10,7 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
+      <div className="App" role="Application" >
         <ErrorComponent>
           <Header/>
           <Main/>
@@ -19,6 +19,6 @@ class App extends Component {
       </div>
     );
   }
-}
+}  
 
 export default App;

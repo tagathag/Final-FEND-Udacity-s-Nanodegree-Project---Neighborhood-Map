@@ -17,6 +17,7 @@
   font-size: 1.5em;
   display: inline-block;
   padding-left: 20px;
+  margin: 5px;
 }
 
 .App-header {
@@ -40,6 +41,20 @@ header {
   fill: #E0E0E0;
 }
 
+button {
+  background-color: rgb(68, 67, 67); 
+  color:rgb(224, 224, 238);   
+}
+
+#menu {
+  padding: 1%;
+  outline: none;
+  margin-top: 5 px;
+  margin-right: 3px;
+  border:0;
+}
+
+
 /* Sidebar */
 
 .Sidebar {
@@ -50,6 +65,12 @@ header {
   transform: translate(0px, 0);
   transition: transform 0.3s ease;
 }
+
+input::placeholder {
+  color: rgb(32, 134, 165);
+  font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  text-align: center;
+  }
 
 .list {
   display: inline-block;
@@ -73,6 +94,10 @@ header {
   color:white;
 }
 
+.list-button {
+  width:200px;
+}
+
 .Search-field {
   display: inline-block;
   width: inherit;
@@ -88,6 +113,7 @@ header {
   -webkit-transform: translate(-300px, 0);
   transform: translate(-300px, 0);
   transition: transform 0.3s ease;
+  visibility: hidden;
 }
 
 /* Map */
@@ -171,6 +197,8 @@ footer {
     -webkit-transform: translate(-300px, 0);
     transform: translate(-320px, 0);
     transition: transform 0.3s ease;
+    visibility: hidden;
+    
   }
 
   .toggle-hide {
@@ -179,10 +207,32 @@ footer {
     transform: translate(0px, 0);
     transition: transform 0.3s ease;
     z-index: 10;
+    visibility: visible;
   }
 
   #map_container {
     width: 100%;
   }
+
+}
+
+
+@media screen and (max-height:450px){
+  header {
+    height:12%;
+  }
+
+  .main-container {
+    height: 76%;
+  }
+
+  .map {
+    height: 76%;
+  }
+
+  footer {
+    height:12%;
+  }
+ 
 
 }

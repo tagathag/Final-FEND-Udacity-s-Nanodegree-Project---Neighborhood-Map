@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import escapeRegExp from "escape-string-regexp";
-import sortBy from "sort-by";
 import Sidemenu from "./Sidemenu";
 import Map from "./Map"
 
@@ -12,7 +11,7 @@ class Main extends Component {
         shownGyms : [],
         activeGym : null,
         bounce : false,
-        zoom : 14,
+        zoom : 13,
         latitude : 40.640063,
         longtitude : 22.94419,
         query : ""
@@ -22,7 +21,6 @@ class Main extends Component {
     // We fetch the data when the component is mounted by invoking the "getGyms()" function
     componentDidMount() {
         this.getGyms();
-        console.log(this.state.haserror);
     }
     
     // function for fetching data from foursquare API
@@ -31,29 +29,25 @@ class Main extends Component {
         const params = {
           client_id: "E2JSELCAMXDB1GHPPXSXRG2ICZYTIYZME1MJYOPDIJSZAPUB",
           client_secret: "ESLKD2RQE3IFYXR5HA3SSINURL1ICVSFHKWAX5FXBVOW4IZR",
-          query: "gym",
+          query: "gyms",
           ll: "40.640063,22.94419",
           v: "20181808",
-          limit: 50,
-          radius: 5000
+          limit: 20,
+          radius: 2000
         }
     
         fetch(starterUrl + new URLSearchParams(params))
         .then(response => {
-          console.log(response);
+        //   console.log(response);
           return response.json();
         })
         .then(data => {
-          console.log(data.response.groups[0].items);
+        //   console.log(data.response.groups[0].items);
           this.setState({
             gyms : data.response.groups[0].items,
             shownGyms : data.response.groups[0].items,
             activeGym : data.response.groups[0].items[0]
           });
-        })
-        .then( () => {
-          console.log("hello");
-          console.log(this.state.shownGyms);
         })
         .catch(error => {
           alert(`Sorry, we cannot fetch data from Foursquare`);
@@ -84,16 +78,20 @@ class Main extends Component {
     // of the Markers
     showGymInfo = (activeGym, bounce) => {
         this.setState({
-            activeGym : activeGym,
-            bounce : bounce
+            zoom : 16,
+            activeGym : activeGym.id,
+            bounce : bounce,
+            latitude : activeGym.location.lat,
+            longtitude : activeGym.location.lng,
             }
         )   
+        console.log(this.state.zoom)
     }
 
 
     render(){
         return(
-            <div className="main-container">
+            <div className="main-container" role="application">
                 <Sidemenu
                     query={this.state.query}
                     updateQuery={this.updateQuery}
@@ -104,13 +102,16 @@ class Main extends Component {
                     googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyAA9GX2fVHjxTsDtW1_Lk_v6zgoMNwhZBY&v=3.exp&libraries=geometry,drawing,places"
                     gyms={this.state.shownGyms} 
                     loadingElement={<div style={{ height: `100%` }} />}
-                    containerElement={ <div className="map" id="map_container" /> }
+                    containerElement={ <div className="map" id="map_container" tabIndex="0" role="application" aria-label="map with markers" /> }
                     mapElement={ <div style={{ height: `100%` }} /> } 
                     isMarkerShown={true}   
                     showGymInfo={this.showGymInfo}   
                     activeGym={this.state.activeGym}
                     bounce={this.state.bounce} 
-                    stopBounce={this.stopBounce}    
+                    stopBounce={this.stopBounce}   
+                    zoom={this.state.zoom} 
+                    latitude={this.state.latitude}
+                    longtitude={this.state.longtitude}
                 />
             </div>
         )
