@@ -17,6 +17,7 @@ class Sidemenu extends Component {
                 <section className="Search-field">
                     <input
                         className="Search-field-input"
+                        aria-label="Search gym"
                         type="text"
                         placeholder="Filter gyms"
                         value={query}
@@ -31,7 +32,7 @@ class Sidemenu extends Component {
                                 className="list-item"
                                 onClick={()=>{showGymInfo(shownGym.venue, true)}}
                                 >
-                                    <button className="list-button" aria-label="button to open infowindow">{shownGym.venue.name}</button>
+                                    <button className="list-button">{shownGym.venue.name}</button>
                                
                                 
                             </li> 
